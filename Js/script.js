@@ -107,6 +107,8 @@ function showWall() {
   wallPostsNode.innerHTML = wallListHTML;
   postNode.value = empty;
   postTitleNode.value =  empty;
+  valueTitleHTML.innerHTML = 0 + '/' + LimitedValueTitle;
+  valuePostHTML.innerHTML = 0 + '/' + LimitedValuePost;
   postNode.style.cssText = 'height:auto;';
   postTitleNode.style.cssText = 'height:auto;';
 }

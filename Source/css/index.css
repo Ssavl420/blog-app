@@ -361,10 +361,12 @@ body {
   body .post__field__wrap .post__field .post__submit .del__post__btn,
   body .post__field__wrap .post__field .post__submit .add__post__btn {
     background: #919191;
+    color: #000;
   }
   body .post__field__wrap .post__field .post__submit .del__post__btn:hover,
   body .post__field__wrap .post__field .post__submit .add__post__btn:hover {
     background: #5a5a5a;
+    color: #000;
   }
   body .wall__wrap {
     background: #212121;
