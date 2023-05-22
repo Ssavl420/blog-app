@@ -1,0 +1,327 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+@import "nullindex";
+
+$color-dark: #212121;
+$color-light: #dedede;
+
+html {
+   scroll-behavior: smooth;
+}
+body {
+   margin: 0 auto;
+   max-width: 100%;
+   max-height: 100%;
+   font-family: 'Roboto';
+   font-size: 20px;
+}
+.container {
+   margin: 0 auto;
+   padding: 0 15px;
+   position: relative;
+   max-width: 1076px;
+}
+
+.post__field__wrap {
+   margin: 16px auto;
+   max-width: 550px;
+   height: auto;
+   border-radius: 12px;
+   border: 0.5px solid;
+   transition: all .5s ease;
+   &:focus {
+      min-height: 81px;
+   }
+   .post__field {
+      max-width: 550px;
+      min-height: 52px;
+      .post__field__input {
+         padding: 16px 20px;
+         width: 100%;
+         height: 52px;
+         text-align: start;
+         font-size: 14px;
+         word-break: break-word;
+         resize: none;
+         overflow: hidden;
+      }
+      .value__item {
+         display: flex;
+         justify-content: space-between;
+         margin: -18px 0 0 0;
+         padding: 0 20px;
+         font-size: 13px;
+         color: #828282;
+         opacity: 0;
+         visibility: hidden;
+         transition: all .5s ease;
+         &.js-active {
+            opacity: 1;
+            visibility: visible;
+         }
+         .textarea__value {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .5s ease;
+            &.js-active {
+               opacity: 1;
+               visibility: visible;
+            }
+         }
+         .value__counter {}
+      }
+      .post__field__textarea {
+         padding: 16px 20px;
+         width: 100%;
+         height: 52px;
+         text-align: start;
+         font-size: 14px;
+         word-break: break-word;
+         resize: none;
+         overflow: hidden;
+      }
+      .value__text {
+         display: flex;
+         justify-content: space-between;
+         margin: -18px 0 0 0;
+         padding: 0 20px;
+         font-size: 13px;
+         opacity: 0;
+         visibility: hidden;
+         transition: all .5s ease;
+         &.js-active {
+            opacity: 1;
+            visibility: visible;
+         }
+         .textarea__value {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .5s ease;
+            &.js-active {
+               opacity: 1;
+               visibility: visible;
+            }
+         }
+         .value__counter {}
+      }
+      .post__submit {
+         padding: 12px 20px;
+         height: 56px;
+         display: flex;
+         justify-content: space-between;
+         border-top: 0.5px solid;
+         .del__post__btn,
+         .add__post__btn {
+            width: 118.91px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all .3s ease;
+         }
+      }
+   }
+}
+.wall__wrap {
+   margin: 16px auto;
+   max-width: 550px;
+   height: auto;
+   border-radius: 12px;
+   border: 0.5px solid;
+   .wall__title {
+      padding: 12px 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 0.5px solid;
+   }
+   .wallposts {
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      &:last-child::after {
+         background-color: transparent;
+      }
+      .post {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         flex-wrap: wrap;
+         gap: 10px;
+         p {
+            width: 100%;
+            word-wrap: break-word;
+         }
+         .post__header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .post__data {
+               order: 2;
+               width: 35%;
+               display: flex;
+               column-gap: 10px;
+               font-size: 13px;
+               font-weight: 400;
+               justify-content: flex-end;
+               flex-wrap: wrap;
+               .post__day {
+                  text-align: right;
+               }
+               .post__time {}
+            }
+            .post__title {
+               order: 1;
+               width: 65%;
+               font-size: 16px;
+               font-weight: 500;
+               text-decoration: underline;
+               &::first-letter {
+                  text-transform: uppercase;
+               }
+            }
+         }
+         .post__body {
+            font-size: 14px;
+            &::first-letter {
+               text-transform: uppercase;
+            }
+         }
+         &::after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+         }
+      }
+      .wallposts__noposts {
+         padding: 36px 20px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         .noposts__text {
+            margin: 16px 0 0 0;
+            font-size: 14px;
+         }
+      }
+   }
+}
+@media (prefers-color-scheme: light) {
+   body {
+      background: white;
+      .post__field__wrap {
+         background: $color-light;
+         border-color: #abadad;
+         .post__field {
+            .post__field__input {
+               background: inherit;
+               color: rgb(0, 0, 0);
+               ::-webkit-input-placeholder {
+                  color: $color-dark;
+               }
+               ::-moz-placeholder {
+                  color: $color-dark;
+               }
+            }
+            .post__field__textarea {
+               background: inherit;
+               color: rgb(0, 0, 0);
+            }
+            .post__submit {
+               border-top-color: #adabab;
+               .del__post__btn,
+               .add__post__btn {
+                  background: #bebebe;
+                  &:hover {
+                     color: #bebebe;
+                     background: rgb(58, 58, 58);
+                  }
+               }
+            }
+         }
+      }
+      .wall__wrap {
+         background: $color-light;
+         border-color: #adabab;
+         .wall__title {
+            color: #828282;
+            border-bottom-color: #adabab;
+         }
+         .wallposts {
+            color: #000;
+            .post {
+               &::after {
+                  background: linear-gradient(90deg, rgba(255,255,255,0) 15%, rgba(173,171,171,1) 50%, rgba(255,255,255,0) 85%);
+               }
+               .post__data {
+                  color: #828282;
+               }
+               .post__title {
+                  color: #828282;
+               }
+            }
+            .wallposts__noposts {
+               .noposts__text {
+                  color: #3f3f3f;
+               }
+            }
+         }
+      }
+   }
+}
+@media (prefers-color-scheme: dark) {
+   body {
+      background: #141414;
+      .post__field__wrap {
+         background: $color-dark;
+         border-color: #616161;
+         .post__field {
+            .post__field__input {
+               background: inherit;
+               color: white;
+            }
+            .post__field__textarea {
+               background: inherit;
+               color: white;
+            }
+            .post__submit {
+               border-top-color: #616161;
+               .del__post__btn,
+               .add__post__btn {
+                  background: #919191;
+                  &:hover {
+                     background: #5a5a5a;
+                  }
+               }
+            }
+         }
+      }
+      .wall__wrap {
+         background: $color-dark;
+         border-color: #616161;
+         .wall__title {
+            color: #dedede;
+            border-bottom-color: #616161;
+         }
+         .wallposts {
+            color: #adadad;
+            .post {
+               &::after {
+                  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(63,63,63,1) 50%, rgba(255,255,255,0) 100%);;
+               }
+            }
+            .wallposts__noposts {
+               .noposts__text {
+                  color: #828282;
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <title>Блог</title>
+   <meta charset="UTF-8">
+   <!-- Настройки адаптивности страницы -->
+   <!-- Фиксированная ширина (ширину берем из дизайн макета) -->
+   <!-- <meta name="viewport" content="width=1200"> -->
+   <!-- Адаптивность -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+   <meta name="format-detection" content="telephone=no">
+   <meta name="description" content="Приложение блог">
+   <meta name="keywords" content="Приложение блог">
+   <!-- Управление доступом поисковых роботов к странице -->
+   <!-- <meta name="robots" content="" -->
+   <!-- Запрет индексации страницы полностью -->
+   <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+   <meta name="robots" content="none">
+   <meta name="Author" content="Savlevich Sergey">
+   <meta name="Copyright" content="Savlevich Sergey">
+   <meta name="Address" content="planet: Earth">
+   <meta http-equiv="refresh" content="; url=index.html">
+   <meta property="og:locale" content="ru_RU">
+   <meta property="og:type" content="article">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta property="og:title" content="Blog App">
+   <meta name="twitter:title" content="Blog App">
+   <meta property="og:description" content="Приложение блог">
+   <meta property="og:image" content="Img/logo/01.png">
+   <meta property="twitter:image" content="Img/logo/01.png">
+   <meta property="og:url" content="https://savlevich.ru/Blog-App">
+   <meta property="og:site_name" content="Blog App">
+   <link rel="icon" href="./Img/favicon.png" type="image/x-icon">
+   <link rel="stylesheet" href="Source/css/index.css">
+</head>
+
+<body>
+   <div class="container">
+      <div class="post__field__wrap">
+         <form id="postField" class="post__field" autocomplete="off">
+            <textarea id="postFieldTitle" class="post__field__input" rows="1" placeholder="Тема поста:"
+               required></textarea>
+            <div id="valueItem" class="value__item">
+               <p id="valueTitleMessage" class="textarea__value">Ограничение 50 символов</p>
+               <p id="valueTitleCounter" class="value__counter"></p>
+            </div>
+            <textarea id="postFieldText" class="post__field__textarea" rows="1" placeholder="Что у вас нового?"
+               required></textarea>
+            <div id="valueText" class="value__text">
+               <p id="valuePostMessage" class="textarea__value">Ограничение 200 символов</p>
+               <p id="valuePostCounter" class="value__counter"></p>
+            </div>
+            <div class="post__submit">
+               <button id="delPost" class="del__post__btn" type="reset">Очистить</button>
+               <button id="addPost" class="add__post__btn" type="submit">Опубликовать</button>
+            </div>
+         </form>
+      </div>
+      <div class="wall__wrap">
+         <p class="wall__title">Лента</p>
+         <div id="wallPosts" class="wallposts">
+            <div class="wallposts__noposts">
+               <svg width="56" height="56" color="#656565" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+                  <g id="history_outline_56__Icons-56/history_outline_56" stroke="none" stroke-width="1" fill="none"
+                     fill-rule="evenodd">
+                     <g id="history_outline_56__history_outline_56" fill-rule="nonzero">
+                        <path d="M0 0h56v56H0z"></path>
+                        <path
+                           d="M28 4a24 24 0 1 1-17.89 40 1.5 1.5 0 0 1 2.24-2 21 21 0 1 0-.84-27h4.99c1.94 0 2 2.84.16 3H8a1.5 1.5 0 0 1-1.5-1.36V8a1.5 1.5 0 0 1 3-.14v4.85A23.96 23.96 0 0 1 28 4Zm0 12c.78 0 1.42.6 1.5 1.36V27.38l6.06 6.06c.55.55.58 1.42.1 2l-.1.12a1.5 1.5 0 0 1-2 .1l-.12-.1-6.5-6.5a1.5 1.5 0 0 1-.43-.91L26.5 28V17.5c0-.83.67-1.5 1.5-1.5Z"
+                           id="history_outline_56__Icon-Color" fill="currentColor"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p class="noposts__text">В архиве пока нет ни одной записи.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script src="Js/script.js"></script>
+</body>
+
+</html>
