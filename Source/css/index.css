@@ -308,6 +308,7 @@ body {
   }
   body .post__field__wrap .post__field .post__submit .del__post__btn,
   body .post__field__wrap .post__field .post__submit .add__post__btn {
+    color: #000;
     background: #bebebe;
   }
   body .post__field__wrap .post__field .post__submit .del__post__btn:hover,
