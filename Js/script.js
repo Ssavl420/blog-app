@@ -15,7 +15,6 @@ const valuePostMessage = document.querySelector('#valuePostMessage');
 const valueTitleHTML = document.querySelector('#valueTitleCounter');
 const valuePostHTML = document.querySelector('#valuePostCounter');
 
-
 const empty = "";
 
 let days = [];
@@ -39,7 +38,7 @@ function getPost () {
   const post = postNode.value;
   const postTitle = postTitleNode.value;
   event.preventDefault();
-  if (!post || !postTitle && postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
+  if (!post || !postTitle || postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
     return
   }
   let optionTime = {
@@ -65,10 +64,9 @@ function getPost () {
 }
 // Вывод постов (массивов Days, Times, PostTitles, Posts) в HTML
 function showWall() {
-  if (postNode.value.length === 0 || postTitleNode.value.length === 0 && postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
+  if (postNode.value.length === 0 || postTitleNode.value.length === 0 || postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
     return null;
   } 
-
   let wallListHTML = '';
   for (let i = 0; i < posts.length; i++) {
   
@@ -102,7 +100,6 @@ function resize() {
 }
 // Проверка количества введенных символов в поле ввода "Заголовок"
 function checkTitleValue() {
-  console.log(postTitleNode.value.length)
 
   valueTitleHTML.innerHTML = (postTitleNode.value.length + '/' + LimitedValueTitle);
 
@@ -116,7 +113,6 @@ function checkTitleValue() {
 }
 // Проверка количества введенных символов в поле ввода "Пост"
 function checkPostValue() {
-  console.log(postNode.value.length)
 
   valuePostHTML.innerHTML = (postNode.value.length + '/' + LimitedValuePost);
 
@@ -128,6 +124,21 @@ function checkPostValue() {
     valuePostMessage.classList.remove('js-active');
   }
 }
+
+// Проверка количества введенных символов в поле ввода
+// function checkValue(whereShow, what, limitValue, whatToColor, message) {
+//   console.log(what.value.length);
+
+//   whereShow.innerHTML = (what.value.length + '/' + limitValue);
+//   if (what.value.length > limitValue) {
+//     whatToColor.style.color = "red";
+//     message.classList.add('js-active');
+//   } else if (what.value.length <= limitValue) {
+//     whatToColor.style.color = "#828282";
+//     message.classList.remove('js-active');
+//   }
+// }
+
 // Показ количества введенных символов для поля ввода
 function showValue() {
   if (postTitleNode === document.activeElement) {
