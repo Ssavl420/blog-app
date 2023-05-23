@@ -34,54 +34,34 @@ postTitleNode.addEventListener('blur', notShowValueTitle);
 postNode.addEventListener('focus', showValue);
 postNode.addEventListener('blur', notShowValuePost);
 
-//
-function checkPostValue() {
-  console.log(postNode.value.length)
-
-  valuePostHTML.innerHTML = (postNode.value.length + '/' + LimitedValuePost);
-
-  if (postNode.value.length > LimitedValuePost) {
-    valuePost.style.color = "red";
-    valuePostMessage.classList.add('js-active');
-  } else if (postNode.value.length <= LimitedValuePost) {
-    valuePost.style.color = "#828282";
-    valuePostMessage.classList.remove('js-active');
+// Получение данных из полей ввода в массив, получение дат постов.
+function getPost () {
+  const post = postNode.value;
+  const postTitle = postTitleNode.value;
+  event.preventDefault();
+  if (!post || !postTitle && postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
+    return
   }
-}
-//
-function checkTitleValue() {
-  console.log(postTitleNode.value.length)
+  let optionTime = {
+    hour: 'numeric',
+    minute: 'numeric',
+  };
+  let optionDay = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+  }
+  const day = new Date().toLocaleString("ru", optionDay).replace(/ г.*/, empty)
+  const time = new Date().toLocaleString("ru", optionTime)
 
-  valueTitleHTML.innerHTML = (postTitleNode.value.length + '/' + LimitedValueTitle);
+  if (!post || !postTitle && postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
+    return null;
+  }
 
-  if (postTitleNode.value.length > LimitedValueTitle) {
-    valueTitle.style.color = "red";
-    valueTitleMessage.classList.add('js-active');
-  } else if (postTitleNode.value.length <= LimitedValueTitle) {
-    valueTitle.style.color = "#828282";
-    valueTitleMessage.classList.remove('js-active');
-  }
-}
-//
-function notShowValuePost() {
-  if (postNode.value.length <= LimitedValuePost) {
-    valuePost.classList.remove('js-active');
-  }
-}
-//
-function notShowValueTitle() {
-  if (postTitleNode.value.length <= LimitedValueTitle) {
-    valueTitle.classList.remove('js-active');
-  }
-}
-//
-function showValue() {
-  if (postTitleNode === document.activeElement) {
-    valueTitle.classList.add('js-active');
-  } 
-   else if (postNode === document.activeElement) {
-    valuePost.classList.add('js-active');
-  } 
+  posts.unshift(post);
+  postsTitles.unshift(postTitle);
+  days.unshift(day);
+  times.unshift(time);
 }
 // Вывод постов (массивов Days, Times, PostTitles, Posts) в HTML
 function showWall() {
@@ -112,35 +92,6 @@ function showWall() {
   postNode.style.cssText = 'height:auto;';
   postTitleNode.style.cssText = 'height:auto;';
 }
-// Получение данных из полей ввода в массив, получение дат постов.
-function getPost () {
-  const post = postNode.value;
-  const postTitle = postTitleNode.value;
-  event.preventDefault();
-  if (!post || !postTitle && postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
-    return
-  }
-  let optionTime = {
-    hour: 'numeric',
-    minute: 'numeric',
-  };
-  let optionDay = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-  }
-  const day = new Date().toLocaleString("ru", optionDay).replace(/ г.*/, empty)
-  const time = new Date().toLocaleString("ru", optionTime)
-
-  if (!post || !postTitle && postNode.value.length > LimitedValuePost || postTitleNode.value.length > LimitedValueTitle) {
-    return null;
-  }
-
-  posts.unshift(post);
-  postsTitles.unshift(postTitle);
-  days.unshift(day);
-  times.unshift(time);
-}
 // Изменение высоты элемента при появлении вертикальной полосы прокрутки (скролла)
 function resize() {
   let el = this;
@@ -148,4 +99,53 @@ function resize() {
     el.style.cssText = 'height:auto;';
     el.style.cssText = 'height:' + (el.scrollHeight + 3) + 'px';
   }, 1);
+}
+// Проверка количества введенных символов в поле ввода "Заголовок"
+function checkTitleValue() {
+  console.log(postTitleNode.value.length)
+
+  valueTitleHTML.innerHTML = (postTitleNode.value.length + '/' + LimitedValueTitle);
+
+  if (postTitleNode.value.length > LimitedValueTitle) {
+    valueTitle.style.color = "red";
+    valueTitleMessage.classList.add('js-active');
+  } else if (postTitleNode.value.length <= LimitedValueTitle) {
+    valueTitle.style.color = "#828282";
+    valueTitleMessage.classList.remove('js-active');
+  }
+}
+// Проверка количества введенных символов в поле ввода "Пост"
+function checkPostValue() {
+  console.log(postNode.value.length)
+
+  valuePostHTML.innerHTML = (postNode.value.length + '/' + LimitedValuePost);
+
+  if (postNode.value.length > LimitedValuePost) {
+    valuePost.style.color = "red";
+    valuePostMessage.classList.add('js-active');
+  } else if (postNode.value.length <= LimitedValuePost) {
+    valuePost.style.color = "#828282";
+    valuePostMessage.classList.remove('js-active');
+  }
+}
+// Показ количества введенных символов для поля ввода
+function showValue() {
+  if (postTitleNode === document.activeElement) {
+    valueTitle.classList.add('js-active');
+  } 
+   else if (postNode === document.activeElement) {
+    valuePost.classList.add('js-active');
+  } 
+}
+// Отключение показа количества введенных символов для поля ввода "Пост"
+function notShowValuePost() {
+  if (postNode.value.length <= LimitedValuePost) {
+    valuePost.classList.remove('js-active');
+  }
+}
+// Отключение показа количества введенных символов для поля ввода "Заголовок"
+function notShowValueTitle() {
+  if (postTitleNode.value.length <= LimitedValueTitle) {
+    valueTitle.classList.remove('js-active');
+  }
 }
